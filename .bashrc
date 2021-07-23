@@ -9,6 +9,9 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+# Persist ssh keys between EC2 instances
+alias setup-ssh="cp /mnt/efs/wfondrie/.ssh/* ~/.ssh"
+
 # From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-start-server.html
 alias start-jupyter="jupyter notebook --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
 
