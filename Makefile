@@ -1,4 +1,4 @@
-all: .bashrc
+all: ~/.bashrc
 
 ~/%: %
-	cp -rv $@ ~/$@
+	cp -rv $? $@
