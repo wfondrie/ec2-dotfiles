@@ -25,7 +25,7 @@ function setup_ssh () {
 }
 
 # From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-start-server.html
-alias start-jupyter="jupyter notebook --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
+alias start-jupyter="jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
 alias setup-jupyter="setup_jupyter"
 alias setup-ssh="setup_ssh"
 
