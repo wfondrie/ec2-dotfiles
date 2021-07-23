@@ -10,11 +10,8 @@ fi
 
 # User specific aliases and functions
 
-# From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-start-server.html
-alias start-jupyter="jupyter notebook --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
-
 # From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-config.html
-function setup-jupyter () {
+function setup_jupyter () {
     jupyter lab password
     mkdir -p ~/ssl
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -22,10 +19,15 @@ function setup-jupyter () {
 }
 
 # Persist SSH keys between EC2 instances
-function setup-ssh () {
+function setup_ssh () {
     eval "$(ssh-agent -s)"
     ssh-add /mnt/efs/wfondrie/id_ed25519
 }
+
+# From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-start-server.html
+alias start-jupyter="jupyter notebook --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
+alias setup-jupyter="setup_jupyter"
+alias setup-ssh="setup_ssh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
