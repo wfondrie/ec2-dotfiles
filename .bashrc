@@ -9,8 +9,6 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-# Persist ssh keys between EC2 instances
-alias setup-ssh="cp /mnt/efs/wfondrie/.ssh/* ~/.ssh"
 
 # From: https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-start-server.html
 alias start-jupyter="jupyter notebook --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key"
@@ -21,6 +19,12 @@ function setup-jupyter () {
     mkdir -p ~/ssl
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
         -keyout ~/ssl/mykey.key -out ~/ssl/mycert.pem
+}
+
+# Persist SSH keys between EC2 instances
+function setup-ssh () {
+    eval "$(ssh-agent -s)"
+    ssh-add /mnt/efs/wfondrie/id_ed25519
 }
 
 # >>> conda initialize >>>
